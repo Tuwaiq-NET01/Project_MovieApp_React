@@ -2,9 +2,14 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import { DeleteFav } from "../actions";
 export default function FavoritesView() {
   const favorites = useSelector((state) => state.favorite);
+  const dispatch = useDispatch();
+
+  const unFavorite = (movie) => {
+    dispatch(DeleteFav(movie));
+  };
   return (
     <Container>
       {favorites.length > 0 ? (
@@ -70,6 +75,17 @@ export default function FavoritesView() {
                   rel="noopener noreferrer"
                 >
                   TMDB
+                </Button>
+                <Button
+                  style={{
+                    background: "#FFA726",
+                    borderWidth: "0px",
+                    margin: "20px",
+                    marginTop: "0px",
+                  }}
+                  onClick={() => unFavorite(movie)}
+                >
+                  Unfavorite
                 </Button>
               </Card>
             );
