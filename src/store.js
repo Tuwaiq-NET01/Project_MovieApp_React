@@ -1,5 +1,5 @@
-import { createStore } from 'redux'
-import allReducers from './reducers'
+import { createStore } from "redux"
+import allReducers from "./reducers"
 
 const initialState = {
   counter: 10,

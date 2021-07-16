@@ -1,24 +1,31 @@
 export const increment = (amount) => {
   return {
-    type: 'INCREMENT',
+    type: "INCREMENT",
     payload: amount,
   }
 }
 export const decrement = () => {
   return {
-    type: 'DECREMENT',
+    type: "DECREMENT",
   }
 }
 
 export const login = (user) => {
   return {
-    type: 'LOGIN',
+    type: "LOGIN",
     payload: user,
+  }
+}
+
+export const loggedIn = (status) => {
+  return {
+    type: "LOGGEDIN",
+    payload: status,
   }
 }
 
 export const logout = () => {
   return {
-    type: 'LOGOUT',
+    type: "LOGOUT",
   }
 }

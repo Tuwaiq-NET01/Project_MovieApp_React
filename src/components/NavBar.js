@@ -1,15 +1,18 @@
-import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { logout } from '../actions'
+import React from "react"
+import { Navbar, Nav } from "react-bootstrap"
+import { BsToggleOn } from "react-icons/bs"
+import { Link } from "react-router-dom"
+import { useSelector, useDispatch } from "react-redux"
+import { useHistory } from "react-router-dom"
+import { logout, loggedIn } from "../actions"
 
 export default function NavBar() {
-  const user = JSON.parse(localStorage.getItem('user'))
   const isLoggedIn = useSelector((state) => state.login)
   const history = useHistory()
   const dispatch = useDispatch()
+
+  const user = JSON.parse(localStorage.getItem("user"))
+  if (user) dispatch(loggedIn(true))
 
   return (
     <Navbar bg="dark" variant="dark">
@@ -21,33 +24,40 @@ export default function NavBar() {
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />{' '}
+          />{" "}
           Mofie
         </Link>
       </Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link as={Link} to="/">
+        <Nav.Link style={{ fontSize: "0.9rem" }} as={Link} to="/">
           Home
+        </Nav.Link>
+      </Nav>
+      <Nav className="mr-auto">
+        <Nav.Link style={{ fontSize: "0.9rem" }} as={Link} to="/search">
+          Search
+        </Nav.Link>
+      </Nav>
+      <Nav className="mr-auto">
+        <Nav.Link style={{ fontSize: "0.9rem" }} as={Link} to="/favorites">
+          My Favorites
         </Nav.Link>
       </Nav>
       <Navbar.Collapse className="justify-content-end">
         {isLoggedIn ? (
-          <Navbar.Text>
-            {' '}
-            Logged in as: {user && user.name}
-            <img
+          <Navbar.Text style={{ fontSize: "0.9rem" }}>
+            {" "}
+            {user && user.name}
+            <BsToggleOn
+              style={{
+                color: "#FFA726",
+                fontSize: "1.2rem",
+                marginLeft: "10px",
+                cursor: "pointer",
+              }}
               onClick={() => {
                 dispatch(logout())
-                history.push('/login')
-              }}
-              src="https://img.icons8.com/office/80/000000/shutdown.png"
-              width="30"
-              height="30"
-              style={{
-                color: 'red',
-                fontSize: '25px',
-                marginLeft: '10px',
-                cursor: 'pointer',
+                history.push("/login")
               }}
             />
           </Navbar.Text>

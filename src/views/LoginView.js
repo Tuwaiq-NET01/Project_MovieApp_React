@@ -1,35 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
-import { useSelector, useDispatch } from 'react-redux'
-import { login, logout } from '../actions'
-import { useHistory } from 'react-router-dom'
-import {
-  Container,
-  Button,
-  Row,
-  Col,
-  Form,
-  Spinner,
-  Alert,
-} from 'react-bootstrap'
+import React, { useState } from "react"
+import { useDispatch } from "react-redux"
+import { login } from "../actions"
+import { useHistory } from "react-router-dom"
+import { Container, Button, Row, Col, Form, Spinner } from "react-bootstrap"
 
 export default function LoginScreen() {
   const history = useHistory()
   const dispatch = useDispatch()
-  const [name, setName] = useState(() => 'Pooie')
-  const [email, setEmail] = useState(() => 'hello@mofie.sa')
-  const [password, setPassword] = useState(() => 'Pass1325!')
-  const [image, setImage] = useState(() => '')
-  const [loginForm, setLoginForm] = useState(() => true)
+  const [name, setName] = useState(() => "Pooie")
+  const [email, setEmail] = useState(() => "hello@mofie.sa")
+  const [password, setPassword] = useState(() => "Pass1325!")
   const [loading, setLoading] = useState(() => false)
-  const [alert, setAlert] = useState(() => 'none')
+
+  const user = JSON.parse(localStorage.getItem("user"))
+  if (user) {
+    history.push("/")
+  }
 
   const signin = () => {
     setLoading(true)
-    setAlert(true)
     setTimeout(() => {
       dispatch(login({ name: name, email: email }))
-      history.push('/')
+      history.push("/")
     }, 1000)
   }
   return (
@@ -38,30 +30,27 @@ export default function LoginScreen() {
         <Col />
         <Col lg="4" className="pt-5">
           {loading ? (
-            <div className="text-center mt-5">
-              <Spinner animation="grow" variant="primary" size="lg" />
+            <div className="text-center mt-5 pt-5">
+              <Spinner animation="grow" size="lg" />
             </div>
           ) : (
             <div>
-              <h2 className="text-center text-light pb-3">Login to Mofie™</h2>
-              <Alert style={{ display: alert }} variant="danger">
-                Something is not right{' '}
-                <span role="img" aria-label="">
-                  💩.
-                </span>
-              </Alert>
+              <h2 className="text-center pb-3" style={{ color: "#FFA726" }}>
+                Login to Mofie
+              </h2>
               <Form>
                 <Form.Group>
-                  <Form.Label className="text-light">Name</Form.Label>
+                  <Form.Label>Name</Form.Label>
                   <Form.Control
                     type="email"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    onFocus={() => setName("")}
                   />
                   <Form.Text>May I know your name?</Form.Text>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label className="text-light">Email</Form.Label>
+                  <Form.Label>Email</Form.Label>
                   <Form.Control
                     type="email"
                     value={email}
@@ -70,7 +59,7 @@ export default function LoginScreen() {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label className="text-light">Password</Form.Label>
+                  <Form.Label>Password</Form.Label>
                   <Form.Control
                     type="password"
                     value={password}
