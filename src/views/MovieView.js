@@ -24,7 +24,6 @@ export default function MovieView() {
 
   const addToFavorite = () => {
     dispatch(AddFav(movie));
-    console.log(movie);
   };
   return (
     <Container fluid="md">
