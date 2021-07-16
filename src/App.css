@@ -1,7 +1,11 @@
-body{
-  background-color: rgb(231, 231, 231) ;
+.light{
+  background-color: rgba(93, 23, 73,0.3);
+  color: gray;
 }
-
+.dark{
+  background-color: rgb(53, 53, 53);
+  color: white;
+}
 .card-movie {
   color: rgb(49, 49, 49);
   background :rgba(93, 23, 73,0.3); 

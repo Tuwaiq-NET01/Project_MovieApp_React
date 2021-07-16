@@ -1,9 +1,10 @@
 import { Navbar, Nav } from 'react-bootstrap'
 import { Link } from "react-router-dom";
-import React, { useState } from 'react';
+import React, { useState, useContext }  from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { useTranslation, Trans } from 'react-i18next'
-
+import ThemeContext from "./ThemeContext"
+import ThemeSwitcher from "./ThemeSwitcher"
 const langs = {
   en: "English",
   ar: "Arabic"
@@ -14,6 +15,7 @@ const MyNavBar = () => {
   const [login, setLogin] = useState(false);
   const [profileObj, setProfileObj] = useState({});
   const { i18n } = useTranslation()
+  const { theme } = useContext(ThemeContext)
   
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
@@ -38,7 +40,7 @@ const MyNavBar = () => {
   };
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant="light" style={{ "backgroundColor": "rgba(93, 23, 73,0.3)" }}>
+    <Navbar className={theme} collapseOnSelect expand="lg" variant="light" >
       <Navbar.Brand as={Link} to="/" >
         <img alt="logo" width="150" src="https://d33wubrfki0l68.cloudfront.net/c6a54be7d89b1ebc31ad2f5558ee470fd4ebd11e/1fb54/institute-images/logo-text-black-centered.png"></img>
       </Navbar.Brand>
@@ -54,6 +56,7 @@ const MyNavBar = () => {
           <Nav.Link as={Link} to="/about">
           {<Trans i18nKey="about">About</Trans>}
         </Nav.Link>
+        <ThemeSwitcher/>
         </Nav>
         {Object.keys(langs).map((lang) => (
         <button

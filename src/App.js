@@ -8,16 +8,17 @@ import About from './Components/About';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import ShowOneMovie from './Components/ShowOneMovie';
-
+import ThemeContext from "./Components/ThemeContext"
 
 const App = () => {
   const [topMovies, setTopMovies] = useState([]);
-  const [selectedMovie , setSelectedMovie] = useState({})
-
+  const [selectedMovie, setSelectedMovie] = useState({})
+  const [theme, setTheme] = useState("light")
+  const value = { theme, setTheme }
   useEffect(() => {
     getTopMovies();
   }, []);
-  
+
   const getTopMovies = () => {
     const url = 'https://api.themoviedb.org/3/discover/movie?api_key=10d10fd3d18e1e9190e6ca2981496aac&sort_by=popularity.desc&include_adult=false&include_video=true&page=1&with_watch_monetization_types=flatrate'
     axios.get(url)
@@ -42,22 +43,24 @@ const App = () => {
       })
   }
   return (
-    <Router >
-      <MyNavBar />
-      <Route path="/movies/:id">
-        <ShowOneMovie movie={selectedMovie} />
-      </Route>
-      <Route exact path="/">
-        <Home topMovies={topMovies} setSelectedMovie={setSelectedMovie} />
-      </Route>
-      <Route path="/about">
-        <About />
-      </Route>
-      <Route path="/browse">
-        <Browse setSelectedMovie={setSelectedMovie}  />
-      </Route>
+    <ThemeContext.Provider value={value}>
+      <Router >
+        <MyNavBar />
+        <Route path="/movies/:id">
+          <ShowOneMovie movie={selectedMovie} />
+        </Route>
+        <Route exact path="/">
+          <Home topMovies={topMovies} setSelectedMovie={setSelectedMovie} />
+        </Route>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/browse">
+          <Browse setSelectedMovie={setSelectedMovie} />
+        </Route>
 
-    </Router>
+      </Router>
+    </ThemeContext.Provider>
   );
 }
 
