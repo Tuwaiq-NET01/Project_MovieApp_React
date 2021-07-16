@@ -1,23 +1,31 @@
-import React, { useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
-import { Container, Row, Col, ListGroup, Button } from "react-bootstrap"
-import axios from "axios"
-
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory, useParams } from "react-router-dom";
+import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
+import axios from "axios";
+import { AddFav } from "../actions";
 export default function MovieView() {
-  const history = useHistory()
-  const user = JSON.parse(localStorage.getItem("user"))
-  if (!user) history.push("/login")
-  const { id } = useParams()
-  const [movie, setMovie] = useState(() => {})
+  const history = useHistory();
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) history.push("/login");
+  const { id } = useParams();
+  const [movie, setMovie] = useState(() => {});
 
   useEffect(() => {
     axios(
       `https://api.themoviedb.org/3/movie/${id}?api_key=d7779d14a18e6ed420e482a36129e67b&language=en-US`
     ).then((res) => {
-      setMovie(res.data)
-    })
+      setMovie(res.data);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
+
+  const dispatch = useDispatch();
+
+  const addToFavorite = () => {
+    dispatch(AddFav(movie));
+    console.log(movie);
+  };
   return (
     <Container fluid="md">
       <Row>
@@ -44,6 +52,7 @@ export default function MovieView() {
               width: "100%",
               borderColor: "#FFA726",
             }}
+            onClick={() => addToFavorite()}
           >
             Add to Favorites
           </Button>
@@ -127,5 +136,5 @@ export default function MovieView() {
         </Col>
       </Row>
     </Container>
-  )
+  );
 }

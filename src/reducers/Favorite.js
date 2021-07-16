@@ -8,4 +8,4 @@ const favorite = (state = [], action) => {
       return state;
   }
 };
-export default counter;
+export default favorite;
