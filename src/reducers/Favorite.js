@@ -3,12 +3,7 @@ const favorite = (state = [], action) => {
     case "ADD_FAV":
       return [...state, action.payload];
     case "DELETE_FAV":
-      return state.map((item, index) => {
-        if (item.id === action.payload.id) {
-          return action.payload;
-        }
-        return item;
-      });
+      return state.filter((x) => x.id !== action.payload.id);
     default:
       return state;
   }
