@@ -8,6 +8,7 @@ import registerServiceWorker from "./registerServiceWorker";
 import { createStore } from "redux";
 import allReducers from "./reducers";
 import { Provider } from "react-redux";
+import './components/translation/i18n'
 
 const store = createStore(
   allReducers,
