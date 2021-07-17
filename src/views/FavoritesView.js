@@ -1,11 +1,13 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { DeleteFav } from "../actions";
 import { Trans } from 'react-i18next'
 export default function FavoritesView() {
-
+  const user = JSON.parse(localStorage.getItem("user"))
+  const history = useHistory()
+  if (!user) history.push("/login")
   const favorites = useSelector((state) => state.favorite);
   const dispatch = useDispatch();
 
