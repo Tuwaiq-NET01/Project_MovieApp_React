@@ -13,27 +13,28 @@ function App() {
   var [faves, setfaves] = useState([])
   const [current, setCurrent] = useState({})
 
-  const contactlist = useSelector(state => state.contactlist)
+  const movieList = useSelector(state => state.movieList)
+  console.log(movieList)
   const dispatch = useDispatch();
 
 
-  const handelSubmit = (event) => {
-    event.preventDefault()
-    dispatch(movieAdded(current))
-  }
+  // const handelSubmit = (event) => {
+  //   event.preventDefault()
+  //   dispatch(movieAdded(current))
+  // }
 
 
   const handleFaveToggle = (film) => {
 
      faves = [...faves];
-    const filmIndex = faves.indexOf(film)
+    const filmIndex = movieList.indexOf(film)
 
     if (filmIndex !== -1) {
-      faves.splice(filmIndex, 1);
-      console.log(`Removing ${film.title} From Favors`)
+      // faves.splice(filmIndex, 1);
+      dispatch(movieRemoved(film))
     } else {
-      faves.push(film);
-      console.log(`Adding ${film.title} To Favors`)
+      // faves.push(film);
+      dispatch(movieAdded(film))
     }
     setfaves( faves )
   }
@@ -57,7 +58,7 @@ function App() {
 
     return (
       <div className="film-library">
-        <FilmListing handleDetailsClick={handleDetailsClick} films={films} faves={faves} onFaveToggle={handleFaveToggle} />
+        <FilmListing handleDetailsClick={handleDetailsClick} films={films}  onFaveToggle={handleFaveToggle} />
         {/* <FilmDetails film={current} /> */}
       </div>
     );

@@ -4,7 +4,7 @@ export default function movieList(state = [], action) {
             return [
                 ...state, 
                 {
-                    movie: action.payload.movie
+                    movie: action.payload
                 }
             ]
 

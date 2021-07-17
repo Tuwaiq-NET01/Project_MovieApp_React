@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FilmRow from './FilmRow';
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useTranslation, Trans } from 'react-i18next'
 const langs = {
   en: "English",
@@ -18,9 +19,11 @@ function FilmListing (props) {
 
         
         const { films, faves} = props;
+        const movieList = useSelector(state => state.movieList)
+
         let showFilms = [];
-        const allFilms = films.map((film) => <FilmRow key={film.id} film={film} isFave={faves.includes(film)} onFaveToggle={() => props.onFaveToggle(film)}  handleDetailsClick ={props.handleDetailsClick}/>)
-        const favesFilms = faves.map((film) => <FilmRow key={film.id} film={film} isFave={faves.includes(film)} onFaveToggle={() => props.onFaveToggle(film)} handleDetailsClick ={props.handleDetailsClick}/>)
+        const allFilms = films.map((film) => <FilmRow key={film.id} film={film} isFave={movieList.includes(film)} onFaveToggle={() => props.onFaveToggle(film)}  handleDetailsClick ={props.handleDetailsClick}/>)
+        const favesFilms = movieList.map((film) => <FilmRow key={film.movie.id} film={film.movie} isFave={movieList.includes(film)} onFaveToggle={() => props.onFaveToggle(film)} handleDetailsClick ={props.handleDetailsClick}/>)
         filters === "all" ? showFilms = allFilms : showFilms = favesFilms
        
         return(
@@ -38,7 +41,7 @@ function FilmListing (props) {
                         </div>
                         <div onClick={() => handleFilterClick('faves')} className={`film-list-filter ${filters === 'faves' ? 'is-active' : ''}`}>
                         <Trans i18nKey="FAVES">FAVES</Trans>
-                            <span className="section-count">{faves.length}</span>
+                            <span className="section-count">{movieList.length}</span>
                         </div>
                      </div>
                         {showFilms}       
