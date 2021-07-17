@@ -15,7 +15,6 @@ function App() {
     }, [])
 
   const getmovie= () =>{
-    //Our api
       axios.get("http://www.omdbapi.com/?s=tom%20and%20jerry&apikey=d4902665")
       .then((res)=>{
           setmovie(res.data.Search)
