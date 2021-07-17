@@ -1,25 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import FilmListing from './components/FilmListing';
+import FilmDetails from './components/FilmDetails';
+import TMDB from './TMDB';
+import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux';
+import { movieAdded, movieRemoved } from './action';
+import { useState, useEffect } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [films, setfilms] = useState(TMDB.films)
+  var [faves, setfaves] = useState([])
+  const [current, setCurrent] = useState({})
+
+  const contactlist = useSelector(state => state.contactlist)
+  const dispatch = useDispatch();
+
+
+  const handelSubmit = (event) => {
+    event.preventDefault()
+    dispatch(movieAdded(current))
+  }
+
+
+  const handleFaveToggle = (film) => {
+
+     faves = [...faves];
+    const filmIndex = faves.indexOf(film)
+
+    if (filmIndex !== -1) {
+      faves.splice(filmIndex, 1);
+      console.log(`Removing ${film.title} From Favors`)
+    } else {
+      faves.push(film);
+      console.log(`Adding ${film.title} To Favors`)
+    }
+    setfaves( faves )
+  }
+
+  const handleDetailsClick = (film) => {
+    console.log(TMDB.api_key)
+    console.log(film.id)
+
+    const url = `https://api.themoviedb.org/3/movie/${film.id}?api_key=971e7f39082bed8b9cf805e1bf9cf859&append_to_response=videos,images&language=en`
+
+    axios({
+      method: 'GET',
+      url: url
+    }).then(response => {
+      setCurrent({ current: response.data })
+    })
+      .catch(e => {
+        console.log(`There is an Error With axios ${e}`)
+      });
+  }
+
+    return (
+      <div className="film-library">
+        <FilmListing handleDetailsClick={handleDetailsClick} films={films} faves={faves} onFaveToggle={handleFaveToggle} />
+        {/* <FilmDetails film={current} /> */}
+      </div>
+    );
 }
 
 export default App;
