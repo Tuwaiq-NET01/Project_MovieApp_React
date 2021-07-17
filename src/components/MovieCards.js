@@ -15,6 +15,10 @@ export default function MovieCards (props)
             <Card.Text>{props.imdbID}  </Card.Text>
             <Card.Text>{props.Type}  </Card.Text>
             <Button variant="danger">Book movie</Button>{' '}
+            <div className="space1"></div>
+            <Button variant="danger">Delete movie</Button>{' '}
+
+
             </Card.Body>
             </Card>
             </center>
