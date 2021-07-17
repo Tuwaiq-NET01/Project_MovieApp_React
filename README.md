@@ -51,6 +51,10 @@ You are required to implement web application that will allow the user to do the
 - Make it Full Stack using .Net as backend
 - Use React Native as your FrontEnd in addition to your web application
 
+## Team Members:
+- إبراهيم العبيسي
+- نورة المطيري
+- عبدالرحمن سراوق
 
 ## Due Date
 
