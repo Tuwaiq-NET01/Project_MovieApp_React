@@ -1,16 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
 import { Navbar, Nav } from "react-bootstrap"
 import { BsToggleOn } from "react-icons/bs"
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { logout, loggedIn } from "../actions"
+import { useTranslation, Trans } from 'react-i18next'
 
-export default function NavBar() {
+export default function NavBar(props) {
+ 
   const isLoggedIn = useSelector((state) => state.login)
   const history = useHistory()
   const dispatch = useDispatch()
-
+  const [IsArabic, setIsArabic] = useState(true)
+ 
   const user = JSON.parse(localStorage.getItem("user"))
   if (user) dispatch(loggedIn(true))
 
@@ -30,20 +33,46 @@ export default function NavBar() {
       </Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link style={{ fontSize: "0.9rem" }} as={Link} to="/">
-          Home
+
+          <Trans i18nKey="HomePage">
+          </Trans>
+
         </Nav.Link>
       </Nav>
       <Nav className="mr-auto">
         <Nav.Link style={{ fontSize: "0.9rem" }} as={Link} to="/search">
-          Search
+
+          <Trans i18nKey="SearchPage">
+          </Trans>
+
         </Nav.Link>
       </Nav>
       <Nav className="mr-auto">
         <Nav.Link style={{ fontSize: "0.9rem" }} as={Link} to="/favorites">
-          My Favorites
+
+        <Trans i18nKey="Favorites">
+          </Trans>
+          
         </Nav.Link>
       </Nav>
       <Navbar.Collapse className="justify-content-end">
+
+        <button onClick={() => {
+          setIsArabic(!IsArabic)
+          const lang = IsArabic ? "en" : "ar"
+          props.i18n.changeLanguage(lang)
+
+        }} 
+        style={{
+          color: "#FFA726",
+          fontSize: "1.0rem",
+          marginRight: "10px",
+          cursor: "pointer",
+          borderRadius:"10px"
+        }}
+        >{IsArabic ? "English" : "Arabic"}</button>
+
+
         {isLoggedIn ? (
           <Navbar.Text style={{ fontSize: "0.9rem" }}>
             {" "}

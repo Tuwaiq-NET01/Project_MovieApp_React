@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { DeleteFav } from "../actions";
+import { Trans } from 'react-i18next'
 export default function FavoritesView() {
+
   const favorites = useSelector((state) => state.favorite);
   const dispatch = useDispatch();
 
@@ -60,7 +62,7 @@ export default function FavoritesView() {
                     marginBottom: "10px",
                   }}
                 >
-                  Learn More
+                  <Trans i18nKey="ReadMore" />
                 </Link>
                 <Button
                   style={{
@@ -85,7 +87,7 @@ export default function FavoritesView() {
                   }}
                   onClick={() => unFavorite(movie)}
                 >
-                  Unfavorite
+                   <Trans i18nKey="Unfavorite" />
                 </Button>
               </Card>
             );
@@ -94,7 +96,7 @@ export default function FavoritesView() {
       ) : (
         <Row>
           <Col style={{ textAlign: "center", margin: "30px" }}>
-            You have no favorites 💩.
+          <Trans i18nKey="NoFavorites" />
           </Col>
         </Row>
       )}

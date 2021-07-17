@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { login } from "../actions"
 import { useHistory } from "react-router-dom"
 import { Container, Button, Row, Col, Form, Spinner } from "react-bootstrap"
+import { Trans } from 'react-i18next'
 
 export default function LoginScreen() {
   const history = useHistory()
@@ -36,21 +37,21 @@ export default function LoginScreen() {
           ) : (
             <div>
               <h2 className="text-center pb-3" style={{ color: "#FFA726" }}>
-                Login to Mofie
+              <Trans i18nKey="Login" />
               </h2>
               <Form>
                 <Form.Group>
-                  <Form.Label>Name</Form.Label>
+                  <Form.Label> <Trans i18nKey="Name" /></Form.Label>
                   <Form.Control
                     type="email"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onFocus={() => setName("")}
                   />
-                  <Form.Text>May I know your name?</Form.Text>
+                  <Form.Text><Trans i18nKey="Name_msg" /></Form.Text>
                 </Form.Group>
                 <Form.Group>
-                  <Form.Label>Email</Form.Label>
+                  <Form.Label> <Trans i18nKey="Email"/> </Form.Label>
                   <Form.Control
                     type="email"
                     value={email}
@@ -59,7 +60,7 @@ export default function LoginScreen() {
                 </Form.Group>
 
                 <Form.Group>
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label><Trans i18nKey="Password"/></Form.Label>
                   <Form.Control
                     type="password"
                     value={password}
@@ -71,7 +72,7 @@ export default function LoginScreen() {
                   className="w-100 bg-accent mb-3"
                   onClick={() => signin()}
                 >
-                  Login
+                  <Trans i18nKey="Login_btn"/>
                 </Button>
               </Form>
             </div>

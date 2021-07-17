@@ -3,7 +3,7 @@ import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap"
 import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
 import axios from "axios"
-
+import { Trans } from 'react-i18next'
 export default function HomeView() {
   const user = JSON.parse(localStorage.getItem("user"))
   const history = useHistory()
@@ -34,7 +34,8 @@ export default function HomeView() {
           }}
         >
           <h1 style={{ color: "#FFA726", margin: "20px" }}>
-            TMDB Movies <Badge style={{ background: "black" }}>Latest 20</Badge>
+            TMDB <Trans i18nKey="Title" /> <Badge style={{ background: "black" }}><Trans i18nKey="subTitle" /></Badge>
+           
           </h1>
           <div
             style={{
@@ -84,7 +85,7 @@ export default function HomeView() {
                         marginBottom: "10px",
                       }}
                     >
-                      Learn More
+                      <Trans i18nKey="ReadMore" />
                     </Link>
                     <Button
                       style={{

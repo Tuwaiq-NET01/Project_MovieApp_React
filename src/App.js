@@ -7,12 +7,13 @@ import SearchView from "./views/SearchView"
 import MovieView from "./views/MovieView"
 import FavoritesView from "./views/FavoritesView"
 import NavBar from "./components/NavBar"
-
+import { useTranslation, Trans } from 'react-i18next'
 function App() {
+  const { i18n } = useTranslation()
   return (
     <div className="App">
       <Router>
-        <NavBar />
+        <NavBar i18n={i18n}/>
         <Switch>
           <Route path="/" component={HomeView} exact />
           <Route path="/favorites" component={FavoritesView} />

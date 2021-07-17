@@ -4,6 +4,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { Container, Row, Col, ListGroup, Button } from "react-bootstrap";
 import axios from "axios";
 import { AddFav } from "../actions";
+import { Trans } from 'react-i18next'
 export default function MovieView() {
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -53,79 +54,81 @@ export default function MovieView() {
             }}
             onClick={() => addToFavorite()}
           >
-            Add to Favorites
+            <Trans i18nKey="Add_to_favorite" />
           </Button>
         </Col>
         <Col>
           <Row>
             <ListGroup style={{ margin: "30px", width: "100%" }}>
               <ListGroup.Item>
-                Title ➜{" "}
+              <Trans i18nKey="MovieTitle" /> ➜ {" "}
                 <span style={{ color: "#FFA726" }}>{movie && movie.title}</span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Tagline ➜{" "}
+              <Trans i18nKey="Tagline" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {movie && movie.tagline}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Status ➜{" "}
+              <Trans i18nKey="Status" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {movie && movie.status}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Release ➜{" "}
+              <Trans i18nKey="Release" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {movie && movie.release_date}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Overview ➜{" "}
+              <Trans i18nKey="Overview" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {movie && movie.overview}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Runtime ➜{" "}
+              <Trans i18nKey="Runtime" /> 
+               ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {" "}
                   {movie && movie.runtime} mintues
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Adult ➜{" "}
+              <Trans i18nKey="Adult" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {movie && movie.adult.toString()}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Budget ➜{" "}
+              <Trans i18nKey="Budget" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   ${movie && movie.budget}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Revenue ➜{" "}
+              <Trans i18nKey="Revenue" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   ${movie && movie.revenue}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Popularity ➜{" "}
+              <Trans i18nKey="Popularity" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {movie && movie.popularity}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Vote Count ➜{" "}
+              <Trans i18nKey="Vote_Count" />  ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {movie && movie.vote_count}
                 </span>
               </ListGroup.Item>
               <ListGroup.Item>
-                Vote Average ➜{" "}
+              <Trans i18nKey="Vote_Average" /> 
+               ➜ {" "}
                 <span style={{ color: "#FFA726" }}>
                   {movie && movie.vote_average}
                 </span>

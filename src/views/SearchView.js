@@ -3,6 +3,7 @@ import { Container, Row, Col, Badge, Table, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
 import axios from "axios"
+import { Trans } from 'react-i18next'
 
 export default function SearchView() {
   const user = JSON.parse(localStorage.getItem("user"))
@@ -40,7 +41,8 @@ export default function SearchView() {
           }}
         >
           <h1 style={{ color: "#FFA726", margin: "20px" }}>
-            Search TMDB <Badge style={{ background: "black" }}>Anything</Badge>
+         
+          <Trans i18nKey="SearchPageTitle" /> <Badge style={{ background: "black" }}><Trans i18nKey="SearchPagesubTitle" /></Badge>
           </h1>
           <input
             style={{
@@ -71,9 +73,9 @@ export default function SearchView() {
           >
             <thead>
               <tr>
-                <th>Poster</th>
-                <th>Title</th>
-                <th>More</th>
+                <th><Trans i18nKey="Poster" /></th>
+                <th><Trans i18nKey="MovieTitle" /></th>
+                <th><Trans i18nKey="More" /></th>
               </tr>
             </thead>
             <tbody>
@@ -107,7 +109,7 @@ export default function SearchView() {
                             margin: "20px",
                           }}
                         >
-                          Learn More
+                           <Trans i18nKey="ReadMore" />
                         </Button>
                       </Link>
                     </td>
