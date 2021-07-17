@@ -3,8 +3,12 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link, BrowserRouter as Router , Switch, Route} from "react-router-dom";
 
+import { useDispatch } from 'react-redux';
+import { addFavorite } from '../action';
 export default function MovieCards (props)
-{         return (
+{        
+    const dispatch = useDispatch(); 
+    return (
             
          <div className="Movie" >
              <center>
@@ -21,7 +25,7 @@ export default function MovieCards (props)
             <Card.Text>{props.Year}  </Card.Text>
             <Card.Text>{props.imdbID}  </Card.Text>
             <Card.Text>{props.Type}  </Card.Text>
-            <Button variant="danger">Favorite</Button>
+            <Button variant="danger" onClick={() => dispatch(addFavorite(props.Movie))}>Favorite</Button>
             <div className="space1"></div>
             <Button variant="danger">Delete movie</Button>
 
