@@ -10,7 +10,7 @@ i18n.use(initReactI18next).use(LanguageDetector).init({
                 latest: "Latest movies",
                 movieSearch: "Search for a movie",
                 favourite: "Favourites",
-                serch: "Search"
+                search: "Search"
             }
         },
         ar: {
@@ -18,7 +18,7 @@ i18n.use(initReactI18next).use(LanguageDetector).init({
                 latest: "أخر الأفلام",
                 movieSearch: "البحث عن فلم",
                 favourite: "المفضلة",
-                search: "البحث"
+                seaarch: "البحث"
             }
         }
     }
