@@ -1,8 +1,8 @@
 {
-  "homepage" : "https://alsuda-redux-react-js.github.io/Project_MovieApp_React/",
   "name": "movies-series-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://alsuda-redux-react-js.github.io/Project_MovieApp_React",
   "dependencies": {
     "axios": "^0.18.0",
     "gh-pages": "^2.0.1",
@@ -19,11 +19,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "deploy": "npm run build&&gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
