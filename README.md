@@ -1,3 +1,12 @@
+# React MovieApp
+
+## Team
+- ## Ahmed Alzubaidi
+- ## Mutaz Alajlan
+- ## Mansour Aldandour
+
+<br/>
+
 ## List technologies used
 - **React**
 - **Redux**
