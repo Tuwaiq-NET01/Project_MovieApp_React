@@ -16,8 +16,15 @@ import logo from "./logo.png"
 import "./NavMenu.css";
 import axios from "axios";
 
+import { useTranslation, Trans } from 'react-i18next'
+const langs = {
+  en: "English",
+  ar: "Arabic"
+}
+
 function NavMenu(props) {
     const [collapsed, setCollapsed] = useState(true);
+    const { i18n } = useTranslation()
 
     let logMenu;
     let favMenu;
@@ -117,7 +124,19 @@ function NavMenu(props) {
                         navbar
                     >
                         {logMenu}
-
+                        <ul className="navbar-nav flex-grow">
+                <NavItem>
+                   
+                       {Object.keys(langs).map((lang) => (
+                    <button
+                    style={{ fontWeight: i18n.language === lang ? "bold" : "normal" }}
+                    className="text-light btn mySearchBtn"
+                    onClick={() => i18n.changeLanguage(lang)}
+                    >{langs[lang]}
+                    </button>
+                ))}
+                </NavItem>
+            </ul>
                         <Nav className="mr-auto" navbar>
                             <NavItem>
                                 <NavLink
@@ -125,7 +144,10 @@ function NavMenu(props) {
                                     className="text-light"
                                     to="/"
                                 >
-                                    Home
+                                    <Trans i18nKey="Home">
+                                        Home
+                                    </Trans>
+
                                 </NavLink>
                             </NavItem>
                             <NavItem>
@@ -134,7 +156,9 @@ function NavMenu(props) {
                                     className="text-light"
                                     to="/movies"
                                 >
+                                    <Trans i18nKey="Movies">
                                     Movies
+                                    </Trans>
                                 </NavLink>
                             </NavItem>
                             <NavItem>
@@ -143,7 +167,9 @@ function NavMenu(props) {
                                     className="text-light"
                                     to="/tv-shows"
                                 >
-                                    TV Shows
+                                    <Trans i18nKey="Tv Shows">
+                                        TV Shows
+                                    </Trans>
                                 </NavLink>
                             </NavItem>
                             {favMenu}
