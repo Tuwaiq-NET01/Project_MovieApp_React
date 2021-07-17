@@ -5,7 +5,7 @@ import { useParams } from 'react-router';
 export default function Detail() {
 const {id} = useParams()
     const [movie, setmovie] = useState({});
-    const [genere, setgen] = useState("");
+    const [genre, setgen] = useState("");
 
 
     useEffect(() => {
@@ -33,7 +33,7 @@ const {id} = useParams()
                 <div className='col-9'>
                     <h1></h1>
                     <h1>{movie.original_title}</h1>
-                    <h4>Genres: {genere}</h4>
+                    <h4>Genres: {genre}</h4>
                     <p>{movie.overview}</p>
                 </div>
             </div>
