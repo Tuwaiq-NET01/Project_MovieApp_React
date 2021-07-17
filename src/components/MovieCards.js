@@ -12,8 +12,9 @@ export default function MovieCards (props)
             
          <div className="Movie" >
              <center>
-            <Card style={{ width: '16rem' }}>
-            <center>{props.Poster} </center>
+            <Card style={{ width: '20rem' }}>
+            <center> <img src = {"https://image.tmdb.org/t/p/w500"+props.Poster} alt='poster'/></center>
+
             <Card.Body>
             <Card.Title>
 
@@ -22,14 +23,7 @@ export default function MovieCards (props)
                 </Link>
 
             </Card.Title>
-            <Card.Text>{props.Year}  </Card.Text>
-            <Card.Text>{props.imdbID}  </Card.Text>
-            <Card.Text>{props.Type}  </Card.Text>
             <Button variant="danger" onClick={() => dispatch(addFavorite(props.Movie))}>Favorite</Button>
-            <div className="space1"></div>
-            <Button variant="danger">Delete movie</Button>
-
-
             </Card.Body>
             </Card>
             </center>

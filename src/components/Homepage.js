@@ -18,7 +18,7 @@ export default function Homepage() {
       axios.get("https://api.themoviedb.org/3/discover/movie?primary_release_year=2019&sort_by=vote_average.desc&api_key=8662614f90f667110ba1c010f0da4d34")
       .then((res)=>{
            setmovie(res.data.results)
-          console.log(res.data.results)
+           console.log(res.data.results)
       }).catch((err) => {
               console.log("error", err);
           })
@@ -26,7 +26,7 @@ export default function Homepage() {
 
    
     const movieList = movie.map((item, index) => {
-        return <MovieCards key={index}  Poster =  {<img src = {"https://image.tmdb.org/t/p/w500"+item.poster_path} />}  Title ={item.original_title} Year={item.release_date} imdbID={"imdb ID: "+item.id} Type={item.original_language} Movie={item} />
+        return <MovieCards key={index}  Poster={item.poster_path} Title ={item.original_title} Year={item.release_date} imdbID={"imdb ID: "+item.id} Type={item.original_language} Movie={item} id={item.id}/>
     })
     const movieRow = movieList.map((item) => {
         return <Col xs ="3">{item} </Col>
