@@ -36,6 +36,12 @@ i18n.use(initReactI18next).use(languageDetector).init({
    }
 })
 export default function Navbar() {
+    const { i18n } = useTranslation()
+
+    const langs = {
+        en: "English",
+        ar: "Arabic"
+      }
   const [searchRes, setSearchRes] = useState("");
 
   return (
@@ -43,10 +49,20 @@ export default function Navbar() {
       <Router>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-            <a class="navbar-brand ms-5" href="#">
+            <Link className='navbar-brand ms-5' to='/'>
+
+            {Object.keys(langs).map((lang) => (
+        <button 
+          style={{ fontWeight: i18n.language === lang ? "bold" : "normal" }}
+          onClick={() => i18n.changeLanguage(lang)}
+        >{langs[lang]}
+        </button>
+      ))}
+
+
             <Trans i18nKey=" MovieApp">
             MovieApp </Trans> 
-            </a>
+            </Link>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">

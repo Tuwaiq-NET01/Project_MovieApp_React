@@ -16,17 +16,12 @@ i18n.use(initReactI18next).use(languageDetector).init({
              
              translation: {
                 Favorite:"Favorite"
-           
-                 
              }
          },
          ar: {
              
              translation: {
                 Favorite:"مفضلة"
-               
-  
-                 
              }
          }
      }
