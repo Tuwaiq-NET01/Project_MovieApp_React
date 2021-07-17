@@ -133,6 +133,7 @@ input[type='search']:focus {
     max-width: 400px;
     width: 100%;
     min-width: 200px;
+    transition: 0.5s;
 }
 
 .details {
