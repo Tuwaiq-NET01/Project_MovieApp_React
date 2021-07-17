@@ -49,7 +49,7 @@ export default function Navbar() {
       <Router>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid">
-            <Link className='navbar-brand ms-5' to='/'>
+            <Link className='navbar-brand ms-5' to='/Project_MovieApp_React/'>
 
             {Object.keys(langs).map((lang) => (
         <button 
@@ -67,14 +67,14 @@ export default function Navbar() {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <Link to="/" className="nav-link" aria-current="page">
+                  <Link to="/Project_MovieApp_React/" className="nav-link" aria-current="page">
                   <Trans i18nKey="AllMovies">
           All Movies </Trans></Link>
 
 
                 </li>
                 <li class="nav-item">
-                  <Link to="/favorites" className="nav-link">
+                  <Link to="/Project_MovieApp_React/favorites" className="nav-link">
                   <Trans i18nKey="Favorites">
           Favorites
         </Trans>
@@ -90,7 +90,7 @@ export default function Navbar() {
                   onChange={(e) => setSearchRes(e.target.value)}
                 />
 
-<Link className="me-5" to="/search">
+<Link className="me-5" to="/Project_MovieApp_React/search">
                   <button class="btn btn-secondary" type="submit">
                   <Trans i18nKey="Search">
           Search
@@ -104,26 +104,26 @@ export default function Navbar() {
     <Switch>
         <Route
               exact
-              path="/"
+              path="/Project_MovieApp_React"
               render={() => <Homepage />}
             />
 
               
 <Route
               exact
-              path="/favorites"
+              path="/Project_MovieApp_React/favorites"
               render={() => <Favorite />}
             />
 
     <Route
               exact
-              path="/search"
+              path="/Project_MovieApp_React/search"
               render={() => <Search target={searchRes} />}
             />
 
 <Route
               exact
-              path="/movies/:id"
+              path="/Project_MovieApp_React/movies/:id"
               render={() => <Detail />}
             />
 

@@ -39,7 +39,7 @@ export default function MovieCards (props)
             <Card.Body>
             <Card.Title>
 
-                <Link to={`/movies/${props.id}`}> 
+                <Link to={`/Project_MovieApp_React/movies/${props.id}`}> 
                     {props.Title}
                 </Link>
 
