@@ -4,7 +4,7 @@ you are required as a group to create Movie App and to get the data about movies
 https://api.themoviedb.org
 
 # Demo
-![Demo](demo.png)
+![Demo](screenshot.png)
 
 # Technology
 - React
