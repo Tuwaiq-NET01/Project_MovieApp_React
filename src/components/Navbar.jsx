@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, BrowserRouter as Router , Switch, Route} from "react-router-dom";
+import Detail from './Detail';
 import Favorite from "./Favorite";
 import Homepage from "./Homepage";
 import Search from "./Search";
@@ -61,11 +62,19 @@ export default function Navbar() {
               render={() => <Favorite />}
             />
 
-<Route
+    <Route
               exact
               path="/search"
               render={() => <Search target={searchRes} />}
             />
+
+<Route
+              exact
+              path="/movies/:id"
+              render={() => <Detail />}
+            />
+
+
     </Switch>
 
 

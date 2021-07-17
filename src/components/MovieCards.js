@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { Link, BrowserRouter as Router , Switch, Route} from "react-router-dom";
 
 export default function MovieCards (props)
 {         return (
@@ -12,9 +13,9 @@ export default function MovieCards (props)
             <Card.Body>
             <Card.Title>
 
-                {/* <Link to={`/movies/${props.Title}`}> */}
+                <Link to={`/movies/${props.id}`}> 
                     {props.Title}
-                {/* </Link> */}
+                </Link>
 
             </Card.Title>
             <Card.Text>{props.Year}  </Card.Text>
