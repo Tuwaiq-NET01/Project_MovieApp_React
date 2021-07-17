@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+ img {
+  border: 1px solid rgb(191, 64, 64);
+  border-radius: 4px;
+  padding: 5px;
+  width: 200px;
+  height: 300px;
+}
+
+.Header{
+height: 700px;
+width: 1500px;
+
+}
+.space{
+height: 100px;
+}
