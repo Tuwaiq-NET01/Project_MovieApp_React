@@ -46,6 +46,9 @@ const App = () => {
     <ThemeContext.Provider value={value}>
       <Router >
         <MyNavBar />
+        <Route exact path="/Project_MovieApp_React">
+          <Home topMovies={topMovies} setSelectedMovie={setSelectedMovie} />
+        </Route>
         <Route path="/movies/:id">
           <ShowOneMovie movie={selectedMovie} />
         </Route>
