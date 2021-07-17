@@ -29,7 +29,7 @@ export default function Homepage() {
         return <MovieCards key={index}  Poster={item.poster_path} Title ={item.original_title} Year={item.release_date} imdbID={"imdb ID: "+item.id} Type={item.original_language} Movie={item} id={item.id}/>
     })
     const movieRow = movieList.map((item) => {
-        return <Col xs ="3">{item} </Col>
+        return <Col className='mt-5' xs ="3">{item} </Col>
     })
 
 
@@ -37,10 +37,7 @@ export default function Homepage() {
     return (
         <div>
             <center><img className="Header" src = "https://duetaz.org/wp-content/uploads/2018/07/Movie-Night.jpg" /></center>
-              <center><div className = "space"> </div>
-     
-
-</center>    
+             
 
             <Container>
 

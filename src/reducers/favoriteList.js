@@ -6,6 +6,7 @@ export default function favoriteList(state = [], action) {
                 action.payload
             ]
         case "REMOVEFAVORITE":
+            console.log('ITSSS: ', action.payload);
            state.splice(action.payload, 1)
             return [
                 ...state

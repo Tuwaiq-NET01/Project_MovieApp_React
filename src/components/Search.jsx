@@ -1,12 +1,11 @@
-import { Col, Row } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container'
-import axios from 'axios'
-import React, { useState, useEffect } from 'react'
-import MovieCards from './MovieCards';
-
+import { Col, Row } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import MovieCards from "./MovieCards";
 
 export default function Search(props) {
-
+    
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
@@ -21,22 +20,28 @@ export default function Search(props) {
     }, [props.target])
 
 
-    const displayMovies = movies.map((item) => {
-        return (
-            <div className='col-3'>
-    <MovieCards Title={item.title} Poster={item.backdrop_path}/>
-            </div>
-        )})
-    
-    
+  const displayMovies = movies.map((item, index) => {
     return (
-        <div className='container'>
-            <h1 className='display-4'>Search Results for: {props.target}</h1>
+      <div className="col-3">
+        <MovieCards
+          key={index}
+          Poster={item.poster_path}
+          Title={item.original_title}
+          Year={item.release_date}
+          imdbID={"imdb ID: " + item.id}
+          Type={item.original_language}
+          Movie={item}
+          id={item.id}
+        />
+      </div>
+    );
+  });
 
-            <div className='row'>
-                {displayMovies}
-            </div>
+  return (
+    <div className="container">
+      <h1 className="display-4">Search Results for: {props.target}</h1>
 
-        </div>
-    )
+      <div className="row">{displayMovies}</div>
+    </div>
+  );
 }
