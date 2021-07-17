@@ -4,6 +4,14 @@
 <img style=" display: block; margin-left: auto; margin-right: auto; width: 50vw;" src="demo1.png" />
 <img style=" display: block; margin-top:20px; margin-left: auto; margin-right: auto; width: 50vw;" src="demo2.png" />
 
+## List of Technologies
+
+* React.js
+* React Router
+* Redux
+* Axios
+* i18next internationalization framework
+
 ## Group Members
 
 > [Fatimah Alqahtani](https://github.com/FatmahAlqhtany)
