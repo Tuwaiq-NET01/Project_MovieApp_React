@@ -1,25 +1,80 @@
-import logo from './logo.svg';
-import './App.css';
+import PopularMovies from "./components/PopularMovies";
+import SearchForMovies from "./components/SearchForMovies";
+import MovieDetails from './components/MovieDetails';
+import FavoriteMovies from './components/FavoriteMovies';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect,
+    Link
+} from "react-router-dom";
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import { Typography, Box, Button } from '@material-ui/core';
+import { useTranslation, Trans } from "react-i18next";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const lngs = {
+    en: { language: "English" },
+    ar: { language: "العربية" }
+}
+
+const App = () => {
+    const { i18n } = useTranslation();
+
+    return (
+        <div className="App">
+            <Router>
+                <AppBar position="static">
+                    <Toolbar style={{ justifyContent: "space-between" }}>
+                        <Box mr={3}>
+                            <Typography variant="h6">
+                                Movie app
+                            </Typography>
+                        </Box>
+                        <Box style={{ justifyContent: "space-between" }}>
+                            <Link to="/" style={{ textDecoration: 'none', color: "inherit", marginLeft: "20px" }}>
+                                <Trans i18nKey="latest"><Button color="inherit">
+                                    Popular movies
+                                </Button></Trans>
+                            </Link>
+                            <Link to="/search" style={{ textDecoration: 'none', color: "inherit", marginLeft: "20px" }}>
+                                <Trans i18nKey="movieSearch">  <Button color="inherit">
+                                    Search for movies
+                                </Button></Trans>
+                            </Link>
+                            <Link to="/favorite" style={{ textDecoration: 'none', color: "inherit", marginLeft: "20px" }}>
+                                <Trans i18nKey="favourite">  <Button color="inherit">
+                                    Favorites
+                                </Button></Trans>
+                            </Link>
+                        </Box>
+                        <Box >
+                            {Object.keys(lngs).map((lng) => (
+                                <Button
+                                    key={lng}
+                                    style={{ fontWeight: i18n.language === lng ? "bold" : "normal", marginLeft: "50px", color: "inherit" }}
+                                    type="submit"
+                                    onClick={() => i18n.changeLanguage(lng)}
+                                >
+                                    {lngs[lng].language}
+                                </Button>
+                            ))}
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+                <Switch>
+                    <Route exact path="/" component={PopularMovies} />
+                    <Route path="/search" component={SearchForMovies} />
+                    <Route path="/details" component={MovieDetails} />
+                    <Route path="/favorite" component={FavoriteMovies} />
+                    <Route path="*">
+                        <Redirect to={{ pathname: '/' }} />
+                    </Route>
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
