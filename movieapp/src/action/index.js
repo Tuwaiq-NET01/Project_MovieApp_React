@@ -6,10 +6,11 @@ export const addTofavorites = (arg) => {
     }
 }
 
-export const removeFromFavorites = (arg,selectindex) => {
+export const removeFromFavorites = (arg,i) => {
     return {
         type: "removeFromFavorites",
         payload: arg,
-        index: selectindex
+        index:i
+      
     }
 }
