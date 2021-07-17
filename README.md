@@ -6,6 +6,7 @@
 - **themoviedb API**
 
 ## wireframes and user stories.
+![Wireframe](./wireframe.jpg)
 - As a user, I can see the latest movies.
 - As a user, I can search movies.
 - As a user, I can add a movie or remove it from my favorites.
