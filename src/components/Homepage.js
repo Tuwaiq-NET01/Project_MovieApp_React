@@ -26,7 +26,7 @@ export default function Homepage() {
 
    
     const movieList = movie.map((item, index) => {
-        return <MovieCards key={index}  Poster =  {<img src = {"https://image.tmdb.org/t/p/w500"+item.poster_path} />}  Title ={item.original_title} Year={item.release_date} imdbID={"imdb ID: "+item.id} Type={item.original_language} />
+        return <MovieCards key={index}  Poster =  {<img src = {"https://image.tmdb.org/t/p/w500"+item.poster_path} />}  Title ={item.original_title} Year={item.release_date} imdbID={"imdb ID: "+item.id} Type={item.original_language} Movie={item} />
     })
     const movieRow = movieList.map((item) => {
         return <Col xs ="3">{item} </Col>

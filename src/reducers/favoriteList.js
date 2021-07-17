@@ -2,7 +2,8 @@ export default function favoriteList(state = [], action) {
     switch (action.type) {
         case "FAVORITE":
             return [
-                ...state
+                ...state,
+                action.payload
             ]
         case "REMOVEFAVORITE":
            
